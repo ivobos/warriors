@@ -233,7 +233,17 @@ const App: React.FC = () => {
 
   const renderGameScene = () => (
     <div className="game-scene">
-      <div className="forest-background">
+      <div 
+        className="forest-background"
+        onClick={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          setCatPosition({ x, y });
+          // Update cat direction based on movement
+          setCatDirection(x < catPosition.x ? 'left' : 'right');
+        }}
+      >
         {snowflakes.map(flake => (
           <div
             key={flake.id}

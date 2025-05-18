@@ -108,28 +108,27 @@
 
 /* Game Scene Cat Styles */
 .game-scene .cat {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   margin-top: 0;
   position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  transition: left 0.3s ease-out, top 0.3s ease-out;
 }
 
 .game-scene .cat-ear {
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid;
-  top: -25px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid;
+  top: -15px;
 }
 
 .game-scene .cat-ear.left {
-  left: 15px;
+  left: 10px;
 }
 
 .game-scene .cat-ear.right {
-  right: 15px;
+  right: 10px;
 }
 
 .game-scene .cat-face {
@@ -139,19 +138,19 @@
 
 .game-scene .cat-eyes::before,
 .game-scene .cat-eyes::after {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
 }
 
 .game-scene .cat-nose {
-  width: 8px;
-  height: 4px;
+  width: 5px;
+  height: 3px;
 }
 
 .game-scene .cat-mouth {
-  width: 16px;
-  height: 8px;
-  border-bottom: 2px solid #000;
+  width: 10px;
+  height: 5px;
+  border-bottom: 1px solid #000;
 }
 
 .game-scene .cat-ear-flower::after,
