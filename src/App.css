@@ -3,61 +3,67 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   color: #ffffff;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .app-header {
-  padding: 2rem;
+  padding: 1rem;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .app-header h1 {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: #e94560;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .game-container {
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 100px);
 }
 
 .game-board {
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  max-width: 800px;
   width: 100%;
+  max-width: 100%;
+  height: 100%;
 }
 
 .game-board h2 {
   color: #e94560;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .game-board p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #ffffff;
   opacity: 0.9;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .button-container {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .start-button, .customize-button {
   background: linear-gradient(45deg, #e94560, #ff6b81);
   color: white;
   border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
   border-radius: 50px;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -65,6 +71,9 @@
   letter-spacing: 1px;
   font-weight: bold;
   box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .customize-button {
@@ -288,7 +297,8 @@
 .game-scene {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: calc(100vh - 200px);
+  min-height: 400px;
   overflow: hidden;
 }
 
@@ -301,341 +311,254 @@
   overflow: hidden;
 }
 
-/* Terrain Styles */
+/* Terrain Elements */
 .forest-background::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40%;
-  background: linear-gradient(to bottom, #e8f4f8, #ffffff);
-  border-radius: 0 0 10px 10px;
-}
-
-.forest-background::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background-image: 
-    radial-gradient(circle at 10% 90%, white 2px, transparent 2px),
-    radial-gradient(circle at 20% 95%, white 2px, transparent 2px),
-    radial-gradient(circle at 30% 85%, white 2px, transparent 2px),
-    radial-gradient(circle at 40% 90%, white 2px, transparent 2px),
-    radial-gradient(circle at 50% 95%, white 2px, transparent 2px),
-    radial-gradient(circle at 60% 85%, white 2px, transparent 2px),
-    radial-gradient(circle at 70% 90%, white 2px, transparent 2px),
-    radial-gradient(circle at 80% 95%, white 2px, transparent 2px),
-    radial-gradient(circle at 90% 85%, white 2px, transparent 2px);
-  background-size: 100% 100%;
+  height: 30%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
   pointer-events: none;
 }
 
 .tree {
   position: absolute;
-  bottom: 40%;
-  width: 60px;
-  height: 120px;
-}
-
-.tree::before {
-  content: '';
-  position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 40px;
-  background: #4a2c2a;
-  border-radius: 5px;
-}
-
-.tree::after {
-  content: '';
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 80px solid #2d5a27;
+  width: 40px;
+  height: 120px;
+  background: #2c3e50;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  z-index: 1;
 }
 
 .tree::before {
   content: '';
   position: absolute;
-  bottom: 30px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 80px solid #2d5a27;
-  filter: brightness(0.8);
-}
-
-.tree::after {
-  content: '';
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 60px solid #2d5a27;
-  filter: brightness(0.9);
-}
-
-.tree::before {
-  content: '';
-  position: absolute;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 40px solid #2d5a27;
+  width: 60px;
+  height: 60px;
+  background: #27ae60;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(39, 174, 96, 0.3);
 }
 
 .bush {
   position: absolute;
-  bottom: 40%;
-  width: 40px;
-  height: 40px;
-  background: #2d5a27;
+  bottom: 0;
+  width: 30px;
+  height: 30px;
+  background: #27ae60;
   border-radius: 50%;
-  box-shadow: 
-    20px 0 0 #2d5a27,
-    40px 0 0 #2d5a27,
-    10px 20px 0 #2d5a27,
-    30px 20px 0 #2d5a27;
-  filter: brightness(0.8);
+  z-index: 1;
 }
 
+.bush::before,
 .bush::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 20%, white 2px, transparent 2px),
-    radial-gradient(circle at 60% 30%, white 2px, transparent 2px),
-    radial-gradient(circle at 40% 60%, white 2px, transparent 2px),
-    radial-gradient(circle at 80% 40%, white 2px, transparent 2px);
-  pointer-events: none;
+  width: 25px;
+  height: 25px;
+  background: #27ae60;
+  border-radius: 50%;
+}
+
+.bush::before {
+  top: -10px;
+  left: -5px;
+}
+
+.bush::after {
+  top: -5px;
+  right: -5px;
 }
 
 .rock {
   position: absolute;
-  bottom: 40%;
-  width: 30px;
-  height: 20px;
-  background: #666;
-  border-radius: 50%;
-  transform: rotate(-15deg);
+  bottom: 0;
+  width: 20px;
+  height: 15px;
+  background: #7f8c8d;
+  border-radius: 50% 50% 0 0;
+  z-index: 1;
 }
 
-.rock::after {
+.rock::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 40%, white 40%, white 60%, transparent 60%);
+  top: -5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  background: #95a5a6;
   border-radius: 50%;
-  opacity: 0.3;
 }
 
-/* Snow Styles */
+/* Snow Effect */
 .snowflake {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  filter: blur(1px);
-  animation: fall linear infinite;
+  color: white;
+  font-size: 1.5rem;
+  user-select: none;
+  z-index: 2;
+  animation: snowfall linear infinite;
 }
 
-@keyframes fall {
+@keyframes snowfall {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Remove parallax effect */
+.tree, .bush, .rock {
+  position: absolute;
+  z-index: 1;
+}
+
+/* Remove the display: none for terrain elements */
+.tree,
+.bush,
+.rock,
+.snowflake {
+  display: block;
+}
+
+/* Remove tree, bush, rock, snowflake, scent trail, and instructions styles */
+.scent-trail,
+.scent-icon,
+.scent-legend,
+.legend-item,
+.hunting-info,
+.hunting-instructions,
+.instructions-hint,
+.show-instructions-button {
+  display: none;
+}
+
+/* Hunting Actions */
+.hunting-actions {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease-out;
+  justify-content: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+@keyframes fadeIn {
   from {
-    transform: translateY(-100%);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: translateY(100vh);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Scent Trail Styles */
-.scent-trail {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.3s;
-}
-
-.scent-icon {
-  font-size: 24px;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-}
-
-/* Hunting Info Styles */
-.hunting-info {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1.5rem;
-  border-radius: 10px;
-  text-align: left;
-  max-width: 400px;
+.hunting-button {
+  padding: 0.5rem 0.8rem;
   border: 2px solid #e94560;
-  box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
-  cursor: pointer;
-  animation: fadeIn 0.3s ease-out;
-  transition: opacity 0.3s ease-out;
-}
-
-.hunting-info:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.hunting-info h3 {
-  color: #e94560;
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.hunting-info p {
-  color: #ffffff;
-  margin-bottom: 1rem;
-  font-style: italic;
-  line-height: 1.4;
-}
-
-.hunting-instructions {
-  background: rgba(233, 69, 96, 0.1);
-  padding: 1rem;
-  border-radius: 8px;
-  margin: 1rem 0;
-}
-
-.hunting-instructions h4 {
-  color: #e94560;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.hunting-instructions ol {
-  margin: 0;
-  padding-left: 1.5rem;
-  color: #ffffff;
-}
-
-.hunting-instructions ul {
-  margin: 0.5rem 0 0.5rem 1.5rem;
-  padding: 0;
-  list-style-type: none;
-}
-
-.hunting-instructions li {
-  margin-bottom: 0.3rem;
-  line-height: 1.4;
-}
-
-.hunting-instructions ul li {
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-.hunting-instructions ul li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: #e94560;
-}
-
-.scent-legend {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(233, 69, 96, 0.3);
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #ffffff;
-  font-size: 0.9rem;
-}
-
-.scent-icon {
-  font-size: 1.2rem;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-}
-
-/* Customization Options */
-.customization-options {
-  display: grid;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.option-group {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
-  border-radius: 10px;
-}
-
-.option-group h4 {
-  color: #e94560;
-  margin-bottom: 1rem;
-}
-
-.color-options, .accessory-options {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.color-button, .accessory-button {
-  padding: 0.5rem 1rem;
-  border: 2px solid transparent;
   border-radius: 20px;
+  background: transparent;
+  color: white;
   cursor: pointer;
   transition: all 0.2s;
-  background: rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 80px;
+  max-width: 120px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.hunting-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.hunting-button:active::after {
+  width: 200%;
+  height: 200%;
+}
+
+.hunting-button:hover {
+  background: rgba(233, 69, 96, 0.2);
+  transform: translateY(-2px);
+}
+
+.hunting-button.active {
+  background: #e94560;
+  color: white;
+  animation: buttonPulse 1s infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(233, 69, 96, 0);
+  }
+}
+
+.hunting-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.hunting-button.pounce {
+  background: #e94560;
   color: white;
 }
 
-.color-button.selected, .accessory-button.selected {
-  border-color: #e94560;
-  background: rgba(233, 69, 96, 0.2);
+.hunting-button.pounce:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
 }
 
-.color-button:hover, .accessory-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+.hunting-button.instructions {
+  background: rgba(233, 69, 96, 0.8);
+  color: white;
+  flex: 1.5;
+  min-width: 120px;
+  font-size: 0.7rem;
+  text-transform: none;
+}
+
+.hunting-button.instructions:hover {
+  background: rgba(233, 69, 96, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(233, 69, 96, 0.4);
 }
 
 /* Cat Hunting States and Animations */
@@ -732,138 +655,494 @@
   animation: pounce 0.5s ease-in-out;
 }
 
-/* Hunting Actions */
-.hunting-actions {
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .game-board {
+    padding: 0.5rem;
+  }
+
+  .game-board h2 {
+    font-size: 1.2rem;
+  }
+
+  .game-board p {
+    font-size: 0.9rem;
+  }
+
+  .hunting-actions {
+    bottom: 5px;
+    padding: 0.3rem;
+  }
+
+  .hunting-button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.6rem;
+    min-width: 70px;
+  }
+
+  .hunting-button.instructions {
+    min-width: 100px;
+    font-size: 0.6rem;
+  }
+
+  /* Adjust cat size for mobile */
+  .game-scene .cat {
+    width: 40px;
+    height: 40px;
+  }
+
+  .game-scene .cat-ear {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid;
+    top: -10px;
+  }
+
+  .game-scene .cat-ear.left {
+    left: 6px;
+  }
+
+  .game-scene .cat-ear.right {
+    right: 6px;
+  }
+
+  .game-scene .cat-face {
+    width: 40%;
+    height: 40%;
+  }
+
+  .game-scene .cat-eyes::before,
+  .game-scene .cat-eyes::after {
+    width: 3px;
+    height: 3px;
+  }
+
+  .game-scene .cat-nose {
+    width: 3px;
+    height: 2px;
+  }
+
+  .game-scene .cat-mouth {
+    width: 6px;
+    height: 3px;
+  }
+}
+
+/* Prevent text selection during gameplay */
+.game-scene {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Add touch feedback */
+.hunting-button:active {
+  transform: scale(0.95);
+  background: rgba(233, 69, 96, 0.3);
+}
+
+/* Ensure buttons are easily tappable */
+button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Prey and Scent Styles */
+.prey {
+  width: 20px;
+  height: 20px;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  gap: 1rem;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem;
-  border-radius: 10px;
-  animation: fadeIn 0.3s ease-out;
+  transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.prey.rabbit {
+  background: #8B4513;
+  border-radius: 50% 50% 0 0;
 }
 
-.hunting-button {
-  padding: 0.5rem 1rem;
-  border: 2px solid #e94560;
-  border-radius: 20px;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.hunting-button::after {
+.prey.rabbit::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: -10px;
   left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%);
+  width: 10px;
+  height: 15px;
+  background: #8B4513;
+  border-radius: 50% 50% 0 0;
+}
+
+.prey.bird {
+  background: #3498db;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.prey.mouse {
+  background: #7f8c8d;
   border-radius: 50%;
+}
+
+.prey.mouse::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 5px;
+  background: #7f8c8d;
+  border-radius: 50% 50% 0 0;
+}
+
+.scent-trail {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
   transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.hunting-button:active::after {
-  width: 200%;
-  height: 200%;
+.scent-trail.rabbit {
+  background: rgba(139, 69, 19, 0.3);
+  box-shadow: 0 0 5px rgba(139, 69, 19, 0.2);
 }
 
-.hunting-button:hover {
-  background: rgba(233, 69, 96, 0.2);
-  transform: translateY(-2px);
+.scent-trail.bird {
+  background: rgba(52, 152, 219, 0.3);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
 }
 
-.hunting-button.active {
+.scent-trail.mouse {
+  background: rgba(127, 140, 141, 0.3);
+  box-shadow: 0 0 5px rgba(127, 140, 141, 0.2);
+}
+
+/* Kill Button */
+.hunting-button.kill {
   background: #e94560;
   color: white;
   animation: buttonPulse 1s infinite;
 }
 
-@keyframes buttonPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(233, 69, 96, 0);
+.hunting-button.kill:hover {
+  background: #ff6b81;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 69, 96, 0.6);
+}
+
+.hunting-button.kill:active {
+  transform: translateY(1px);
+  background: #d6334a;
+}
+
+/* Mobile styles for kill button */
+@media (max-width: 768px) {
+  .kill-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
-.hunting-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
+/* Inventory Styles */
+.inventory {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  z-index: 5;
 }
 
-.hunting-button.pounce {
+.inventory h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: #e94560;
+}
+
+.inventory-items {
+  display: flex;
+  gap: 5px;
+}
+
+.inventory-item {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.inventory-slot {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.prey-emoji {
+  font-size: 1.5rem;
+}
+
+.count {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
   background: #e94560;
   color: white;
-}
-
-.hunting-button.pounce:hover:not(:disabled) {
-  transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
-}
-
-.instructions-hint {
+  font-size: 0.7rem;
+  padding: 2px 4px;
+  border-radius: 10px;
+  min-width: 16px;
   text-align: center;
-  color: #e94560;
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(233, 69, 96, 0.3);
-  font-style: italic;
-  opacity: 0.8;
 }
 
-.show-instructions-button {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(233, 69, 96, 0.8);
+/* Dig Button */
+.hunting-button.dig {
+  background: #8B4513;
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s;
+}
+
+.hunting-button.dig:hover {
+  background: #A0522D;
+}
+
+.hunting-button.dig.active {
+  background: #654321;
+  animation: digAnimation 1s ease-in-out;
+}
+
+@keyframes digAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Mobile styles for inventory */
+@media (max-width: 768px) {
+  .inventory {
+    top: 5px;
+    right: 5px;
+    padding: 5px;
+  }
+
+  .inventory-item {
+    width: 30px;
+    height: 30px;
+  }
+
+  .inventory-slot {
+    width: 30px;
+    height: 30px;
+  }
+
+  .prey-emoji {
+    font-size: 1.2rem;
+  }
+
+  .count {
+    font-size: 0.6rem;
+    min-width: 14px;
+  }
+}
+
+.buried-prey {
+  margin-top: 10px;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.buried-prey h4 {
+  margin: 0;
+  color: #e94560;
+  font-size: 0.8rem;
+}
+
+/* Mobile styles for buried prey */
+@media (max-width: 768px) {
+  .buried-prey {
+    margin-top: 5px;
+    padding: 3px;
+  }
+
+  .buried-prey h4 {
+    font-size: 0.7rem;
+  }
+}
+
+.burial-marker {
+  font-size: 1.5rem;
+  filter: brightness(0.8);
+  animation: markerPulse 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.burial-marker.nearby {
+  filter: brightness(1.2);
+  animation: markerPulse 1s infinite;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+}
+
+.hunting-button.dig.can-retrieve {
+  background: #27ae60;
+  color: white;
+  animation: buttonPulse 1s infinite;
+}
+
+.hunting-button.dig.can-retrieve:hover {
+  background: #2ecc71;
+}
+
+@keyframes markerPulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+/* Mobile styles for burial markers */
+@media (max-width: 768px) {
+  .burial-marker {
+    font-size: 1.2rem;
+  }
+}
+
+.instructions-button {
+  display: none;
+}
+
+.instructions-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
   animation: fadeIn 0.3s ease-out;
 }
 
-.show-instructions-button:hover {
-  background: rgba(233, 69, 96, 1);
+.instructions-content {
+  background: #1a1a2e;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: white;
+  box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+}
+
+.instructions-content h2 {
+  color: #e94560;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.instructions-section {
+  margin-bottom: 1.5rem;
+}
+
+.instructions-section h3 {
+  color: #e94560;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.instructions-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instructions-section li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.instructions-section li::before {
+  content: '•';
+  color: #e94560;
+  position: absolute;
+  left: 0;
+}
+
+.close-instructions {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: #e94560;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.close-instructions:hover {
+  background: #ff6b81;
   transform: translateY(-2px);
   box-shadow: 0 2px 8px rgba(233, 69, 96, 0.4);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+/* Mobile styles for instructions */
+@media (max-width: 768px) {
+  .hunting-button.instructions {
+    min-width: 100px;
+    font-size: 0.7rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .instructions-content {
+    padding: 1.5rem;
+  }
+
+  .instructions-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .instructions-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .instructions-section li {
+    font-size: 0.9rem;
+  }
+
+  .close-instructions {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
   }
 } 
